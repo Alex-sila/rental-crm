@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM для аренды квартир</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🏢 CRM для аренды</h1>
+
+    <!-- Дашборд (общая статистика) -->
+    <div class="dashboard">
+      <div class="dash-card">
+        <span class="dash-title">Общий доход</span>
+        <span class="dash-val profit" id="totalIncome">0 ₽</span>
+      </div>
+      <div class="dash-card">
+        <span class="dash-title">Общие расходы</span>
+        <span class="dash-val loss" id="totalExpenses">0 ₽</span>
+      </div>
+      <div class="dash-card main-dash">
+        <span class="dash-title">Чистая прибыль</span>
+        <span class="dash-val" id="totalProfit">0 ₽</span>
+      </div>
+    </div>
+
+    <!-- Форма добавления / редактирования -->
+    <div class="add-form">
+      <h2 id="formTitle">Добавить квартиру</h2>
+      <input type="hidden" id="editId">
+      
+      <div class="form-grid">
+        <div class="input-group">
+          <label>Адрес / Название</label>
+          <input type="text" id="name" placeholder="ул. Ленина, 15">
+        </div>
+        <div class="input-group">
+          <label>Площадь (кв.м)</label>
+          <input type="number" id="area" placeholder="45">
+        </div>
+        <div class="input-group">
+          <label>Оплата в месяц (₽)</label>
+          <input type="number" id="income" placeholder="30000">
+        </div>
+        <div class="input-group">
+          <label>Сдано (мес. из 12)</label>
+          <input type="number" id="months" value="12" max="12" min="0">
+        </div>
+        <div class="input-group">
+          <label>Ипотека (₽/мес)</label>
+          <input type="number" id="mortgage" placeholder="0">
+        </div>
+        <div class="input-group">
+          <label>Коммуналка (₽/мес)</label>
+          <input type="number" id="utilities" placeholder="4000">
+        </div>
+        <div class="input-group">
+          <label>Расходники (₽/мес)</label>
+          <input type="number" id="expenses" placeholder="2000">
+        </div>
+        <div class="input-group">
+          <label>Статус</label>
+          <select id="status">
+            <option value="rented">Сдана</option>
+            <option value="free">Пустует</option>
+          </select>
+        </div>
+        <div class="input-group" style="grid-column: 1 / -1;">
+          <label>Заметки</label>
+          <input type="text" id="notes" placeholder="Например: сломался кран...">
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-add" id="addBtn">Добавить</button>
+        <button class="btn btn-cancel hidden" id="cancelBtn">Отмена</button>
+      </div>
+    </div>
+
+    <!-- Список квартир -->
+    <div class="apartments-list" id="list"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
